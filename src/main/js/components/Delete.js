@@ -5,11 +5,11 @@ export default class Delete extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.state = { id: props.id }
+		this.state = { numero: props.numero }
     }
     
     delete(event){
-        fetch('/api/v1/user/delete/user/?id='+this.state.id)
+        fetch('/api/v1/user/delete/user/?numero='+this.state.numero)
         
     }
 

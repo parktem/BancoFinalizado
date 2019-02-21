@@ -2,42 +2,48 @@ package es.salesianos.model;
 
 public class User implements IEntity<String> {
 
-	String dni;
-	String nombre;
-	String apellido;
+	String numero;
+	Integer saldo;
 
-	public String getDni() {
-		return dni;
-	}
-
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+	
 
 	@Override
 	public String getId() {
-		return getDni();
+		return null;
 	}
 
 	@Override
 	public void setId(String id) {
-		setDni(id);
+
+	}
+
+
+	/**
+	 * @return the saldo
+	 */
+	public Integer getSaldo() {
+		return saldo;
+	}
+
+	/**
+	 * @param saldo the saldo to set
+	 */
+	public void setSaldo(Integer saldo) {
+		this.saldo = saldo;
+	}
+
+	/**
+	 * @return the numero
+	 */
+	public String getNumero() {
+		return numero;
+	}
+
+	/**
+	 * @param numero the numero to set
+	 */
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 }

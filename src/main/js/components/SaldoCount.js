@@ -10,20 +10,13 @@ export default class UserCount extends React.Component {
 
 	render() {
 
-		var acum = 0
+		for (var key in this.state.users) {
 
-		for (let index = 0; index < this.state.count; index++) {
-			acum += this.state.users[index].saldo
-			
 		}
-
 
 		return (
 			<div>
-				<tr>
-					<td>Salario total:</td><td>{acum}</td>
-				</tr>
-				se muestran {this.state.count} elementos
+
 			</div>
 		)
 

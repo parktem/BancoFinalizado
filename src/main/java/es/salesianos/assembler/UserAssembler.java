@@ -12,9 +12,8 @@ public class UserAssembler {
 	public User createUserFromRequest(HttpServletRequest request) {
 
 		User user = new User();
-		user.setDni(request.getParameter("dni"));
-		user.setNombre(request.getParameter("nombre"));
-		user.setApellido(request.getParameter("apellido"));
+		user.setNumero(request.getParameter("numero"));
+		user.setSaldo(Integer.parseInt(request.getParameter("saldo")));
 		return user;
 	}
 

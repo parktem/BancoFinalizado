@@ -29,8 +29,10 @@ public class AuthorService implements Service {
 
 	public void insertOrupdateUser(User user) {
 		if (!repository.search(user).isPresent()) {
+			System.out.println("----------------------------------------------------------------");
 			repository.insert(user);
 		} else {
+			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 			repository.update(user);
 		}
 	}

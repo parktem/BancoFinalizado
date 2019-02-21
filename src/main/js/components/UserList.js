@@ -1,6 +1,7 @@
 import React from "react";
 import UserItem from "./UserItem"
 import UserCount from "./UserCount"
+import SaldoCount from "./SaldoCount"
 
 export default class UserList extends React.Component {
 
@@ -29,11 +30,14 @@ export default class UserList extends React.Component {
 					userItems.push(<UserItem user={usuario} />)
 				}
 			)
+			
 		
 		return (
 				<div>
+					<table class="align-middle">
 					{userItems}
-					<UserCount  count={userItems.length}/>
+					<UserCount  count={this.state.users}/>
+					</table>
 				</div>
 			)
 			

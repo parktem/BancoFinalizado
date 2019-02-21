@@ -7,10 +7,8 @@ export default class AddUserForm extends React.Component {
     super();
     this.state = {
 
-      nombre: "",
-      apellido: "",
-      dni: ""
-    
+      numero: "",
+      saldo: "",
     }
   }
 
@@ -37,22 +35,17 @@ export default class AddUserForm extends React.Component {
     return (
       <div class="input-group col-md-4 col-md-offset-4" style={cssStyle}>
         <div>
+          <a href=".../webapp/WEB-INF/jsp/pepe.jsp">asdasdasd</a>
           <input type="text" class="form-control"
-            name="nombre"
-            placeholder="Add a new user name..."
+            name="numero"
+            placeholder="Add a new numero"
             value={this.state.nombre}
             onChange={this.handleChange.bind(this)}
             onKeyDown={this.keyPressed.bind(this)} />
           <input type="text" class="form-control"
-            name="apellido"
-            placeholder="Add a new user apellido..."
+            name="saldo"
+            placeholder="Add a new saldo."
             value={this.state.apellido}
-            onChange={this.handleChange.bind(this)}
-            onKeyDown={this.keyPressed.bind(this)} />
-          <input type="text" class="form-control"
-            placeholder="Add a new user document id..."
-            name="dni"
-            value={this.state.dni}
             onChange={this.handleChange.bind(this)}
             onKeyDown={this.keyPressed.bind(this)} />
         </div>

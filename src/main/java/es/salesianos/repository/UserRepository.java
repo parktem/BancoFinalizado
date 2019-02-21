@@ -28,20 +28,21 @@ public class UserRepository {
 
 	public void insert(User userFormulario) {
 		log.debug("el log funciona");
-		String sql = "INSERT INTO USER (dni,nombre,apellido)" + "VALUES ( :dni, :nombre, :apellido)";
+		String sql = "INSERT INTO BANCO (numero, saldo)" + "VALUES ( :numero, :saldo)";
+		System.out.println(userFormulario.getNumero());
 		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("dni", userFormulario.getDni());
-		params.addValue("nombre", userFormulario.getNombre());
-		params.addValue("apellido", userFormulario.getApellido());
+		params.addValue("numero", userFormulario.getNumero());
+		params.addValue("saldo", userFormulario.getSaldo());
 		namedJdbcTemplate.update(sql, params);
+		System.out.println("Ha guardado");
 	}
 
 	public Optional<User> search(User user) {
-		String sql = "SELECT * FROM USER WHERE dni = ?";
+		String sql = "SELECT * FROM BANCO WHERE numero = ?";
 		log.debug("ejecutando la consulta: " + sql);
 		User person = null;
 		try {
-			person = (User) jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper(User.class), user.getDni());
+			person = (User) jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper(User.class), user.getNumero());
 		} catch (EmptyResultDataAccessException e) {
 			log.error("error", e);
 		}
@@ -50,13 +51,23 @@ public class UserRepository {
 	}
 
 	public void update(User user) {
-		String sql = "UPDATE user SET " + "nombre = ?, apellido = ? WHERE dni = ?";
-		jdbcTemplate.update(sql, user.getNombre(), user.getApellido(), user.getDni());
+		String sql = "SELECT * FROM BANCO WHERE numero = ?";
+		log.debug("ejecutando la consulta: " + sql);
+		User person = null;
+		try {
+			person = (User) jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper(User.class), user.getNumero());
+		} catch (EmptyResultDataAccessException e) {
+			log.error("error", e);
+		}
+		sql = "UPDATE BANCO SET " + "saldo = ? WHERE numero = ?";
+		jdbcTemplate.update(sql,(user.getSaldo() + person.getSaldo()), person.getNumero());
 	}
 
 	public List<User> listAllUsers() {
-		String sql = "SELECT * FROM USER";
+		String sql = "SELECT * FROM BANCO";
 		List<User> users = jdbcTemplate.query(sql, new BeanPropertyRowMapper(User.class));
+		for(User user : users)
+			System.out.println(user.getNumero());
 		return users;
 	}
 
